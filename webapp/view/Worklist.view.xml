@@ -1,0 +1,188 @@
+<!--<mvc:View-->
+<!--	controllerName="com.wec.hr.u135.ZHR_WSM_UI35.controller.Worklist"-->
+<!--	xmlns="sap.m"-->
+<!--	xmlns:mvc="sap.ui.core.mvc"-->
+<!--	xmlns:semantic="sap.f.semantic">-->
+<!--	<semantic:SemanticPage-->
+<!--		id="page"-->
+<!--		headerPinnable="false"-->
+<!--		toggleHeaderOnTitleClick="false">-->
+<!--		<semantic:titleHeading>-->
+<!--			<Title-->
+<!--				text="{i18n>worklistTitle}"-->
+<!--				level="H2"/>-->
+<!--		</semantic:titleHeading>-->
+<!--		<semantic:content>-->
+<!--			<Table-->
+<!--				id="table"-->
+<!--				width="auto"-->
+<!--				items="{-->
+<!--					path: '/WORKSCHDHEADSet',-->
+<!--					sorter: {-->
+<!--						path: 'SchdName',-->
+<!--						descending: false-->
+<!--					}-->
+<!--				}"-->
+<!--				noDataText="{worklistView>/tableNoDataText}"-->
+<!--				busyIndicatorDelay="{worklistView>/tableBusyDelay}"-->
+<!--				growing="true"-->
+<!--				growingScrollToLoad="true"-->
+<!--				updateFinished=".onUpdateFinished">-->
+<!--				<headerToolbar>-->
+<!--					<OverflowToolbar>-->
+<!--						<Title-->
+<!--							id="tableHeader"-->
+<!--							text="{worklistView>/worklistTableTitle}"-->
+<!--							level="H3"/>-->
+<!--						<ToolbarSpacer />-->
+<!--						<SearchField-->
+<!--							id="searchField"-->
+<!--							tooltip="{i18n>worklistSearchTooltip}"-->
+<!--							search=".onSearch">-->
+<!--							<layoutData>-->
+<!--								<OverflowToolbarLayoutData-->
+<!--									maxWidth="200px"-->
+<!--									priority="NeverOverflow"/>-->
+<!--							</layoutData>-->
+<!--						</SearchField>-->
+<!--					</OverflowToolbar>-->
+<!--				</headerToolbar>-->
+<!--				<columns>-->
+<!--					<Column id="nameColumn">-->
+<!--						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>-->
+<!--					</Column>-->
+<!--				</columns>-->
+<!--				<items>-->
+<!--					<ColumnListItem-->
+<!--						type="Navigation"-->
+<!--						press=".onPress">-->
+<!--						<cells>-->
+<!--							<ObjectIdentifier-->
+<!--								title="{SchdName}"/>-->
+<!--						</cells>-->
+<!--					</ColumnListItem>-->
+<!--				</items>-->
+<!--			</Table>-->
+<!--		</semantic:content>-->
+<!--		<semantic:sendEmailAction>-->
+<!--			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>-->
+<!--		</semantic:sendEmailAction>-->
+<!--	</semantic:SemanticPage>-->
+<!--</mvc:View>-->
+<mvc:View controllerName="com.wec.hr.u135.ZHR_WSM_UI35.controller.Worklist" height="100%" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:vm="sap.ui.comp.variants">
+	<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<vm:VariantManagement standardItemText="My Products"></vm:VariantManagement>
+				</f:heading>
+				<f:actions>
+					<ToolbarSpacer/>
+					<Button text="Global Action" type="Transparent"/>
+					<Button text="Toggle Footer" type="Transparent" press="onToggleFooter"/>
+					<Button icon="sap-icon://action" type="Transparent"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<fb:FilterBar id="filterbar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true">
+						<fb:filterGroupItems>
+							<fb:FilterGroupItem id="idA" groupName="__$INTERNAL$" name="A" label="Delivery Date" partOfCurrentVariant="true" visibleInFilterBar="true">
+								<fb:control>
+									<DatePicker id="idDate"/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem id="idB" groupName="__$INTERNAL$" name="B" label="Region" labelTooltip="Tooltip Example" mandatory="true"
+								partOfCurrentVariant="true" visibleInFilterBar="true">
+								<fb:control>
+									<ComboBox id="idCB">
+										<items>
+											<core:Item id="id1" key="001" text="EMEA"/>
+											<core:Item id="id2" key="002" text="America"/>
+											<core:Item id="id3" key="003" text="APJ"/>
+										</items>
+									</ComboBox>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem id="idB2" groupName="__$INTERNAL$" name="C" label="Supplier" labelTooltip="Tooltip Example" mandatory="true"
+								partOfCurrentVariant="true" visibleInFilterBar="true">
+								<fb:control>
+									<ComboBox id="idCB2" items="{
+												path: 'supplier>/ProductSuppliers',
+												templateShareable: true
+											}">
+										<items>
+										<core:Item id="idCB3" key="{supplier>key}" text="{supplier>name}"/>
+										</items>
+									</ComboBox>
+								</fb:control>
+							</fb:FilterGroupItem>
+						</fb:filterGroupItems>
+					</fb:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<!--<Table id="table" width="auto" items="{ path: '/WORKSCHDHEADSet', sorter: { path: 'SchdName', descending: false } }"-->
+			<!--	noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"-->
+			<!--	updateFinished=".onUpdateFinished">-->
+			<!--	<columns>-->
+			<!--		<Column id="nameColumn">-->
+			<!--			<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>-->
+			<!--		</Column>-->
+			<!--	</columns>-->
+			<!--	<items>-->
+			<!--		<ColumnListItem type="Navigation" press=".onPress">-->
+			<!--			<cells>-->
+			<!--				<ObjectIdentifier title="{SchdName}"/>-->
+			<!--			</cells>-->
+			<!--		</ColumnListItem>-->
+			<!--	</items>-->
+			<!--</Table>-->
+				<Table
+					id="table"
+					inset="false"
+					items="{
+						path: 'supplier>/ProductCollection'
+					}"
+				>
+					<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Name"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Category"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="SupplierName"/>
+						</Column>
+					</columns>
+
+					<items>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<ObjectIdentifier title="{supplier>Name}" text="{ProductId}" />
+								<Text text="{supplier>Category}" />
+								<Text text="{supplier>SupplierName}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>
